@@ -7,6 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./styles.css"> 
         <script>
+            function scrollToAnchor(hashName) {
+                location.hash = "#" + hashName;
+            }
+
             function logToConsoleWindow(){
                 var strTmp = `My name is Ahmed Asif Shaik, a student from University of Kwa-Zulu Natal and my Github username is AsifShaik1`;
                 console.log(strTmp);
@@ -33,7 +37,9 @@
                 console.log(`${rndInt} - ${faceMapping[rndInt]}`);
                 const dice_winner = document.getElementById("dice_winner");
                 dice_winner.innerHTML = `<b> ${rndInt} - ${faceMapping[rndInt]} </b> `;
-                window.scrollTo(0, 250); 
+                //window.scrollTo(0, 250); 
+                //document.getElementById(`Q2`).click();
+                scrollToAnchor(`Q2`);
             }
 
             function  readFile() {
@@ -52,7 +58,9 @@
                                                       <p><b> Developer : ${json["developer"]} </b></p>
                                                       <p><b> Description : ${json["description"]} </b></p> `
                     })
-                window.scrollTo(0, 900);
+                //window.scrollTo(0, 900);
+                //document.getElementById(`Q3`).click();
+                scrollToAnchor(`Q3`);
             }
 
         </script>
@@ -60,14 +68,16 @@
     <body>
         <div id="app">
             <br>
-            <h2> Question 1 - Log to Console Window </h2>
+            <a href="#Q1"></a>
+            <h2 id="Q1"> Question 1 - Log to Console Window </h2>
             <button class="button" onclick="logToConsoleWindow()"> Q1 Log to Console</button>
             <p> Click the button above to log the desired string to the <b> console window. </b></p>
             <p id="log_status" class="answer"> </p>
 
             <br>
-            <h2> Question 2 - Roll a dice and predict the category which will win the MTN BUsiness App 
-                 of the year  </h2> 
+            <a href="#Q2"></a>
+            <h2 id="Q2"> Question 2 - Roll a dice and predict the category which will win the MTN BUsiness App 
+                 of the year. You can click the button multiple times, and see the result. </h2> 
             <button class="button" onclick="rollDice()"> Q2 Roll a Dice </button> 
             <p> Click the button above and simulate the roll of a dice, which will predict a winner. Each number 
                 on the face represents a category. A normal dice has 6 face, this 1 is special, it has 13. </p>
@@ -89,11 +99,13 @@
             <p id="dice_winner" class="answer">  </p>
 
             <br>
-            <h2> Question 3 - Open and read a file</h2>
+            <a href="#Q3"></a>
+            <h2 id="Q3"> Question 3 - Open and read a file</h2>
             <button class="button" onclick="readFile()"> Q3 Open and Read a File </button>
             <p> Click the button above to display the winner of Best Campus Cup in 2021. </p>
             <p id="best_campus_cup" class="answer"> </p>
-
+            <br>
+            <a href="#Q1"> <p> <b> Back to Top  </b> </p>  </a>
         </div>
     </body>
 </html>

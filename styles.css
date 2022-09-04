@@ -1,6 +1,11 @@
 
+html { 
+  scroll-behavior: smooth; 
+}
+
 body {
   max-width: 1650px;
+  min-height: 2400px;
 }
   
 
