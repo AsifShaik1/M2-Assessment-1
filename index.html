@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="M2-Assessment-1">
+        <meta name="author" content="Ahmed Asif Shaik">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles.css"> 
+        <script>
+            function logToConsoleWindow(){
+                var strTmp = `My name is Ahmed Asif Shaik, a student from University of Kwa-Zulu Natal and my Github username is AsifShaik1`;
+                console.log(strTmp);
+                const log_status = document.getElementById("log_status");
+                log_status.innerHTML = "<b> Done. Please see console window. </b>"
+            }
+
+            const faceMapping = {1: "Best Consumer Solution",
+                2:  "Best Enterprise Solution",
+                3:  "Best African Solution",
+                4:  "Most Innovative Solution",
+                5:  "Best Gaming Solution", 
+                6:  "Best Health Solution",
+                7:  "Best Agricultural Solution", 
+                8:  "Best Educational Solution", 
+                9:  "Best Financial Solution", 
+                10: "Best Hackathon Solution", 
+                11: "Best South African Solution", 
+                12: "Best Campus Cup Solution", 
+                13: "Huawei App Gallery Categroy 15"}
+
+            function rollDice(){
+                const rndInt = Math.floor(Math.random() * 13) + 1;
+                console.log(`${rndInt} - ${faceMapping[rndInt]}`);
+                const dice_winner = document.getElementById("dice_winner");
+                dice_winner.innerHTML = `<b> ${rndInt} - ${faceMapping[rndInt]} </b> `;
+                window.scrollTo(0, 250); 
+            }
+
+            function  readFile() {
+                fetch('./winnerCampusCup.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("HTTP error " + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(json => {
+                        console.log(json);
+                        const best_campus_cup = document.getElementById("best_campus_cup")
+                        best_campus_cup.innerHTML = ` <p><b> Category : ${json["category"]} </b></p>  
+                                                      <p><b> App Name : ${json["title"]} </b></p>  
+                                                      <p><b> Developer : ${json["developer"]} </b></p>
+                                                      <p><b> Description : ${json["description"]} </b></p> `
+                    })
+                window.scrollTo(0, 900);
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="app">
+            <br>
+            <h2> Question 1 - Log to Console Window </h2>
+            <button class="button" onclick="logToConsoleWindow()"> Q1 Log to Console</button>
+            <p> Click the button above to log the desired string to the <b> console window. </b></p>
+            <p id="log_status" class="answer"> </p>
+
+            <br>
+            <h2> Question 2 - Roll a dice and predict the category which will win the MTN BUsiness App 
+                 of the year  </h2> 
+            <button class="button" onclick="rollDice()"> Q2 Roll a Dice </button> 
+            <p> Click the button above and simulate the roll of a dice, which will predict a winner. Each number 
+                on the face represents a category. A normal dice has 6 face, this 1 is special, it has 13. </p>
+            <ul>
+                <li>  1  - Best Consumer Solution </li>
+                <li>  2  - Best Enterprise Solution </li>
+                <li>  3  - Best African Solution </li>
+                <li>  4  - Most Innovative Solution </li>
+                <li>  5  - Best Gaming Solution </li> 
+                <li>  6  - Best Health Solution </li>
+                <li>  7  - Best Agricultural Solution </li>
+                <li>  8  - Best Educational Solution </li>
+                <li>  9  - Best Financial Solution </li>
+                <li> 10 - Best Hackathon Solution </li>
+                <li> 11 - Best South African Solution </li>
+                <li> 12 - Best Campus Cup Solution </li>
+                <li> 13 - Huawei App Gallery Categroy 15 </li>
+            </ul>
+            <p id="dice_winner" class="answer">  </p>
+
+            <br>
+            <h2> Question 3 - Open and read a file</h2>
+            <button class="button" onclick="readFile()"> Q3 Open and Read a File </button>
+            <p> Click the button above to display the winner of Best Campus Cup in 2021. </p>
+            <p id="best_campus_cup" class="answer"> </p>
+
+        </div>
+    </body>
+</html>
